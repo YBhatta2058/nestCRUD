@@ -1,7 +1,8 @@
 <h1 align="center">NestJS User Authentication and Authorization Project</h1>
 
 <p align="center">
-  This project is a NestJS-based application that handles user authentication and authorization using JWTs, with full user management features.
+  
+This project is a NestJS-based application that focuses on managing college data with full CRUD (Create, Read, Update, Delete) operations. It leverages PostgreSQL as the database and TypeORM for efficient and structured interaction with the data layer. The application also incorporates JWT-based authentication to ensure secure access to the college management features. Alongside robust college CRUD functionality, it includes user authentication to protect sensitive operations, making the application secure and reliable. Comprehensive testing is implemented using Jest to ensure the quality and stability of the application.
 </p>
 
 <h2>📁 Project Structure</h2>
