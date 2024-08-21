@@ -125,16 +125,3 @@ yarn test</code></pre>
   <li><strong>GET <code>/users</code>:</strong> Returns a list of all users (protected by JWT).</li>
   <li><strong>POST <code>/users</code>:</strong> Creates a new user (you may want to restrict this endpoint based on your use case).</li>
 </ul>
-
-<h2>🤝 Contributing</h2>
-<p>Contributions are welcome! Please follow these steps to contribute:</p>
-<ol>
-  <li>Fork the repository.</li>
-  <li>Create a new branch (<code>git checkout -b feature/your-feature</code>).</li>
-  <li>Make your changes and commit them (<code>git commit -m 'Add some feature'</code>).</li>
-  <li>Push to the branch (<code>git push origin feature/your-feature</code>).</li>
-  <li>Create a pull request.</li>
-</ol>
-
-<h2>📄 License</h2>
-<p>This project is licensed under the MIT License. See the <code>LICENSE</code> file for more details.</p>
