@@ -1,73 +1,140 @@
+<h1 align="center">NestJS User Authentication and Authorization Project</h1>
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  This project is a NestJS-based application that handles user authentication and authorization using JWTs, with full user management features.
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<h2>📁 Project Structure</h2>
+<p>The project is organized as follows:</p>
+<pre>
+<code>
+src/
+├── auth/
+│   ├── auth.controller.ts
+│   ├── auth.module.ts
+│   ├── auth.service.ts
+│   ├── jwt.strategy.ts
+│   ├── jwt-auth.guard.ts
+│   ├── local-auth.guard.ts
+│   └── local.strategy.ts
+├── colleges/
+│   ├── entities/
+│   │   └── user.entity.ts
+│   ├── colleges.controller.ts
+│   ├── colleges.module.ts
+│   ├── colleges.service.ts
+├── users/
+│   ├── users.module.ts
+│   ├── users.repository.ts
+│   ├── users.service.ts
+├── app.module.ts
+├── main.ts
+├── app.controller.ts
+├── app.controller.spec.ts
+└── app.service.ts
+</code>
+</pre>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<h2>🚀 Installation and Setup</h2>
 
-## Description
+<h3>Prerequisites</h3>
+<ul>
+  <li>Node.js (>= 14.x)</li>
+  <li>npm (>= 6.x) or yarn (>= 1.22.x)</li>
+  <li>PostgreSQL or any other database supported by TypeORM</li>
+</ul>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<h3>Steps</h3>
+<ol>
+  <li>
+    <strong>Clone the repository:</strong>
+    <pre><code>git clone https://github.com/your-repository.git
+cd your-repository</code></pre>
+  </li>
+  <li>
+    <strong>Install dependencies:</strong>
+    <pre><code>npm install
+# or
+yarn install</code></pre>
+  </li>
+  <li>
+    <strong>Set up the database:</strong>
+    <p>Ensure your database is running and create the necessary database for the application.</p>
+  </li>
+  <li>
+    <strong>Configure environment variables:</strong>
+    <p>Create a <code>.env</code> file in the root directory with the following variables:</p>
+    <pre><code>DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_USER=your_db_user
+DATABASE_PASSWORD=your_db_password
+DATABASE_NAME=your_db_name
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRATION=3600s</code></pre>
+  </li>
+</ol>
 
-## Installation
+<h2>🔧 Environment Variables</h2>
+<p>The application relies on several environment variables, which should be configured in a <code>.env</code> file:</p>
+<ul>
+  <li><code>DATABASE_HOST</code>: The database host (e.g., <code>localhost</code>).</li>
+  <li><code>DATABASE_PORT</code>: The database port (e.g., <code>5432</code>).</li>
+  <li><code>DATABASE_USER</code>: The database user.</li>
+  <li><code>DATABASE_PASSWORD</code>: The database password.</li>
+  <li><code>DATABASE_NAME</code>: The name of the database.</li>
+  <li><code>JWT_SECRET</code>: The secret key for signing JWTs.</li>
+  <li><code>JWT_EXPIRATION</code>: The expiration time for JWTs (e.g., <code>3600s</code>).</li>
+</ul>
 
-```bash
-$ npm install
-```
+<h2>▶️ Running the Application</h2>
+<p>To start the application, run the following command:</p>
+<pre><code>npm run start
+# or
+yarn start</code></pre>
+<p>This will start the NestJS application, which should be accessible at <code>http://localhost:3000</code>.</p>
 
-## Running the app
+<h2>🔑 Authentication and Authorization</h2>
+<p>The application uses JWT for authentication and authorization:</p>
+<ul>
+  <li><strong>Login:</strong> Users can log in by sending a <code>POST</code> request to <code>/auth/login</code> with their username and password. Upon successful authentication, a JWT token is returned.</li>
+  <li><strong>Protected Routes:</strong> Routes can be protected using the <code>JwtAuthGuard</code>. For example, only authenticated users can access routes that use this guard.</li>
+</ul>
 
-```bash
-# development
-$ npm run start
+<h2>👤 User Management</h2>
+<p>The <code>UsersService</code> and <code>UsersRepository</code> handle all user-related operations:</p>
+<ul>
+  <li><strong>Create User:</strong> A new user can be created using the <code>create</code> method in <code>UsersService</code>, which stores the user in the database.</li>
+  <li><strong>Find User by Username:</strong> Users can be retrieved by their username using the <code>findOneByUsername</code> method.</li>
+  <li><strong>List All Users:</strong> The <code>findAll</code> method can be used to retrieve all users from the database.</li>
+</ul>
 
-# watch mode
-$ npm run start:dev
+<h2>🧪 Testing</h2>
+<p>The application includes basic unit tests. To run the tests, use the following command:</p>
+<pre><code>npm run test
+# or
+yarn test</code></pre>
+<p>Make sure that your test database is correctly configured in the <code>.env.test</code> file.</p>
 
-# production mode
-$ npm run start:prod
-```
+<h2>🚢 Deployment</h2>
+<p>For deployment, ensure that all environment variables are correctly set in your production environment. The application can be deployed on any platform that supports Node.js.</p>
 
-## Test
+<h2>📜 API Documentation</h2>
+<p>Here is a brief overview of the available API endpoints:</p>
+<ul>
+  <li><strong>POST <code>/auth/login</code>:</strong> Logs in a user and returns a JWT.</li>
+  <li><strong>GET <code>/users</code>:</strong> Returns a list of all users (protected by JWT).</li>
+  <li><strong>POST <code>/users</code>:</strong> Creates a new user (you may want to restrict this endpoint based on your use case).</li>
+</ul>
 
-```bash
-# unit tests
-$ npm run test
+<h2>🤝 Contributing</h2>
+<p>Contributions are welcome! Please follow these steps to contribute:</p>
+<ol>
+  <li>Fork the repository.</li>
+  <li>Create a new branch (<code>git checkout -b feature/your-feature</code>).</li>
+  <li>Make your changes and commit them (<code>git commit -m 'Add some feature'</code>).</li>
+  <li>Push to the branch (<code>git push origin feature/your-feature</code>).</li>
+  <li>Create a pull request.</li>
+</ol>
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+<h2>📄 License</h2>
+<p>This project is licensed under the MIT License. See the <code>LICENSE</code> file for more details.</p>
